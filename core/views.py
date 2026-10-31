@@ -7,8 +7,9 @@ from core.models import Question
 
 def question_view(request):
 
-    latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    output = ', '.join([q.question_text for q in latest_question_list])
-    return HttpResponse(output)
+    return HttpResponse(
+        "<h1> Sargento Torreznillo </h1>"
+        "<p>Quieres comer palomitas con tu maridito </p>"
+    )
 
 
