@@ -31,7 +31,13 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    '.onrender.com'
+    '192.168.1.137',
+    '.onrender.com',
+    'thermal-fabulous-gods-investors.trycloudflare.com',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://thermal-fabulous-gods-investors.trycloudflare.com',
 ]
 
 
@@ -45,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core.apps.CoreConfig',
+    'motor.apps.MotorConfig',
 ]
 
 MIDDLEWARE = [
@@ -83,8 +90,12 @@ WSGI_APPLICATION = 'gestor.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'gestor',
+        'USER': 'postgres',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -135,6 +146,8 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+LOGIN_URL = "/admin/login/"
 
 LOGGING = {
     "version": 1,
